@@ -1,0 +1,48 @@
+[33mcommit b909ad795a69518b7eaba1e19839f37a719a29b2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Abdul-213 <m.abdulhannan.ahmad@gmail.com>
+Date:   Tue Aug 18 02:17:38 2020 +0100
+
+    Modified templates tod isplay posts from database.
+
+ blog/templates/blog/post_list.html | 16 [32m+++++++[m[31m---------[m
+ blog/views.py                      |  6 [32m+++++[m[31m-[m
+ 2 files changed, 12 insertions(+), 10 deletions(-)
+
+[33mcommit 96b187c97533c8df40dc717ebb125765c9341e51[m
+Author: Abdul-213 <m.abdulhannan.ahmad@gmail.com>
+Date:   Sat Aug 15 02:13:41 2020 +0100
+
+    Changed HTML for the site
+
+ blog/admin.py                      |  4 [31m----[m
+ blog/models.py                     | 24 [32m+[m[31m-----------------------[m
+ blog/templates/blog/post_list.html | 22 [32m++++++++++++++++++++++[m
+ blog/urls.py                       |  7 [32m+++++++[m
+ blog/views.py                      |  3 [32m+++[m
+ mysite/urls.py                     |  3 [32m++[m[31m-[m
+ 6 files changed, 35 insertions(+), 28 deletions(-)
+
+[33mcommit efdab5a818c3fd54239c5f366da8aaa19d125113[m
+Author: Abdul-213 <m.abdulhannan.ahmad@gmail.com>
+Date:   Fri Aug 14 15:14:21 2020 +0100
+
+    My Django Girls app, first commit
+
+ .gitignore                      |   8 [32m+++[m
+ blog/__init__.py                |   0
+ blog/admin.py                   |  10 [32m++++[m
+ blog/apps.py                    |   5 [32m++[m
+ blog/migrations/0001_initial.py |  29 [32m++++++++++[m
+ blog/migrations/0002_posty.py   |  28 [32m+++++++++[m
+ blog/migrations/0003_person.py  |  21 [32m+++++++[m
+ blog/migrations/__init__.py     |   0
+ blog/models.py                  |  41 [32m++++++++++++++[m
+ blog/tests.py                   |   3 [32m+[m
+ blog/views.py                   |   3 [32m+[m
+ manage.py                       |  21 [32m+++++++[m
+ mysite/__init__.py              |   0
+ mysite/settings.py              | 123 [32m++++++++++++++++++++++++++++++++++++++++[m
+ mysite/urls.py                  |  21 [32m+++++++[m
+ mysite/wsgi.py                  |  16 [32m++++++[m
+ requirements.txt                |   1 [32m+[m
+ 17 files changed, 330 insertions(+)
