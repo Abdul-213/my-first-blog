@@ -3,14 +3,14 @@
 
 {% block content %}
     {% for post in posts %}
-    <div class="card" style="width: 40rem; margin-bottom: 25px; margin-top: 25px; ">
-        <div class="post" style = "margin-left: 25px; margin-top: 25px;">
-            <h2 style><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.description|linebreaksbr }}</p>
+    <div class="card">
+        <div class="post">
+            <h2 style id = "box"><a id = "box" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <p id = "box">{{ post.description|linebreaksbr }}</p>
             <div class="date">
-                <p>Published: {{ post.published_date }}</p>
+                <p id = "box">Published: {{ post.published_date }}</p>
             </div>
-            <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary"> Read more </a>
+            <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-info"> Read more </a>
         </div>
     </div>  
     {% endfor %}
