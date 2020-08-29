@@ -10,9 +10,14 @@ class NewVisitorTest(unittest.TestCase):
         self.browser.quit()
 
     def test_check_title(self):
-        self.browser.get('http://127.0.0.1:8000/')
+        self.browser.get('http://127.0.0.1:8000/blog')
 
-        self.assertIn('Abdulhannan Ahmad', self.browser.title)
+        self.assertIn('Abdulhannadasan Ahmad', self.browser.title)
+        header_text = self.browser.find_element_by_id('h1').text
+        self.assertIn('Blog Postadss', header_text)
+
+        
+
         self.fail('Finish the test')
         
 

@@ -50,4 +50,4 @@ def post_edit(request, pk):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 def resume(request):
-    return HttpResponse('<html><title>Resume</title></html>')
+    return render(request, 'blog/resume.html')

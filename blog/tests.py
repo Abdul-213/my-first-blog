@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import resolve
 from blog.views import resume, home
 from django.http import HttpRequest
+from django.template.loader import render_to_string
 
 class HomePageTest(TestCase):
 
@@ -10,13 +11,9 @@ class HomePageTest(TestCase):
         self.assertEqual(found.func, home)
 
     def test_home_page_returns_correct_html(self):
-        request = HttpRequest()  
-        response = home(request)  
-        html = response.content.decode('utf8')  
-        self.assertIn('<title>Abdulhannan Ahmad</title>', html)  
-
-
-
+        response = self.client.get('/home') 
+        self.assertTemplateUsed(response, 'blog/home.html')
+    
     def test_resume_page_returns_correct_html(self):
         request = HttpRequest()  
         response = resume(request)  
