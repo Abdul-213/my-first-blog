@@ -1,4 +1,102 @@
-<html>
-    <title>Resume</title>
-    <h1>Resume</h1>
-</html>
+{% extends 'blog/base.html' %}
+
+{% block header %}
+<div class="page-header">
+    <h1><a href="/blog">Resume</a></h1>
+    {% if user.is_authenticated %}
+    <a href="{% url 'work_experience_new' %}" class="btn btn-info">Add Work Experience</a>
+    <a href="{% url 'education_new' %}" class="btn btn-info">Add Education</a>
+    <a href="{% url 'interest_new' %}" class="btn btn-info">Add Interest</a>
+    <!-- <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a> -->
+    {% endif %}
+</div>
+{% endblock %}
+
+
+
+{% block content %}
+    {% block workexperience %}
+        <h1>Work Experience</h1> 
+        {% for item in all_items_feed %}
+            {% if item.type == 'experience' %}
+                <div class="card" id="cv">
+                    <div class="post">
+                        <h2 style id = "box">{{ item.experience_title }}</h2>
+                        <p id = "box">{{ item.location|linebreaksbr }}</p>
+                        <p id = "box">{{ item.description|linebreaksbr }}</p>
+                        <div class="date">
+                            <p id = "box">Published: {{ item.published_date }}</p>
+                        </div>
+                        {% if user.is_authenticated %}
+                            <a href="/" class="btn btn-info"> Edit Post </a>
+                        {% endif %}
+                    </div>
+                </div>  
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
+    {% block education %}
+        <h1>Education</h1>
+        {% for item in all_items_feed %}
+            {% if item.type == 'education' %}
+                <div class="card" id="cv">
+                    <div class="post">
+                        <h2 style id = "box">{{ item.institute }}</h2>
+                        <p id = "box">{{ item.education_level|linebreaksbr }}</p>
+                        <p id = "box">{{ item.results|linebreaksbr }}</p>
+                        <div class="date">
+                            <p id = "box">Published: {{ item.published_date }}</p>
+                        </div>
+                        {% if user.is_authenticated %}
+                            <a href="/" class="btn btn-info"> Edit Post </a>
+                        {% endif %}
+                    </div>
+                </div>  
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
+    {% block interests %}
+        <h1>Interests</h1>
+        {% for item in all_items_feed %}
+            {% if item.type == 'interest' %}
+            <div class="card" id="cv">
+                <div class="post">
+                    <h2 style id = "box">{{ item.interest }}</h2>
+                    <p id = "box">{{ item.description|linebreaksbr }}</p>
+                    <div class="date">
+                        <p id = "box">Published: {{ item.published_date }}</p>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <a href="/" class="btn btn-info"> Edit Post </a>
+                    {% endif %}
+                </div>
+            </div>  
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
+{% endblock %}
+
+<!-- {% for post in posts %}
+<div class="card">
+    <div class="post">
+        <h2 style id = "box">{{ post.title }}</h2>
+        <p id = "box">{{ post.description|linebreaksbr }}</p>
+        <div class="date">
+            <p id = "box">Published: {{ post.published_date }}</p>
+        </div>
+        <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-info"> Read more </a>
+    </div>
+</div>  
+{% endfor %}
+{% for post in posts %}
+<div class="card">
+    <div class="post">
+        <h2 style id = "box">{{ post.title }}</h2>
+        <p id = "box">{{ post.description|linebreaksbr }}</p>
+        <div class="date">
+            <p id = "box">Published: {{ post.published_date }}</p>
+        </div>
+        <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-info"> Read more </a>
+    </div>
+</div>  
+{% endfor %} -->

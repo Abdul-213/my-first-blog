@@ -6,9 +6,11 @@ from django.utils import timezone
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200, blank=True, null=True)
     text = models.TextField()
+    
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
@@ -19,4 +21,38 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+# class CV(models.Model):
+#     title = models.CharField(max_length=200)
+#     description = models.TextField()
+#         created_date = models.DateTimeField(default=timezone.now)
+#     published_date = models.DateTimeField(blank=True, null=True)
 
+
+class Experience(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    experience_title = models.CharField(max_length=200)
+    location = models.CharField(max_length=200)
+    description = models.TextField()
+
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+
+class Education(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    education_level = models.CharField(max_length=200) 
+    institute = models.CharField(max_length=200)
+    results = models.TextField()
+
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)
+
+class Interest(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    interest = models.CharField(max_length=200)
+    description = models.TextField()
+
+    created_date = models.DateTimeField(default=timezone.now)
+    published_date = models.DateTimeField(blank=True, null=True)

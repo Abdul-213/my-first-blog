@@ -21,7 +21,6 @@
 </head>
 
 <body>
-
   <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
     <div class="bg-info border-right" id="sidebar-wrapper">
@@ -47,7 +46,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin">Login</a>
@@ -67,19 +66,24 @@
         </div>
       </nav>
 
-      <div class="page-header">
-        <h1><a href="/blog">Blog Posts</a></h1>
-        {% if user.is_authenticated %}
-        <a href="{% url 'post_new' %}" class="btn btn-info"> New Post </a>
-        <!-- <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a> -->
-        {% endif %}
-    </div>
+
+      {% block header %}
+      {% endblock %}
+
     
     <div class="content container">
 
         <div class="row">
             <div class="col-md-8">
             {% block content %}
+              
+              {% block workexperience %}
+              {% endblock %}
+              {% block education %}
+              {% endblock %}
+              {% block interests %}
+              {% endblock %}
+
             {% endblock %}
             </div>
         </div>
