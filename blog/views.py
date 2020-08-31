@@ -12,7 +12,7 @@ def home(request):
     return render(request, 'blog/home.html')
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
+    posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('-created_date')
     return render(request, 'blog/post_list.html', {'posts' : posts})
 
 def post_detail(request, pk):
@@ -106,8 +106,8 @@ def interest_new(request):
     return render(request, 'blog/interest_edit.html', {'form': form})
 
 def resume(request):
-    experiences = Experience.objects.all().annotate(type=Value('experience', CharField())).order_by('-published_date')
-    educations = Education.objects.all().annotate(type=Value('education', CharField())).order_by('-published_date')
+    experiences = Experience.objects.all().annotate(type=Value('experience', CharField())).order_by('-created_date')
+    educations = Education.objects.all().annotate(type=Value('education', CharField())).order_by('-created_date')
     interests = Interest.objects.all().annotate(type=Value('interest', CharField()))
 
 
