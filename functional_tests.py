@@ -138,9 +138,6 @@ class AddingAndEditingTests(unittest.TestCase):
         self.assertTrue(input_interest, self.browser.find_element_by_tag_name('h2'))
         self.assertTrue(input_description, self.browser.find_element_by_tag_name('p'))
 
-    def test_can_delete_post(self):
-        login(self)
-
 
 
 if __name__ == '__main__':
