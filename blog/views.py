@@ -31,6 +31,7 @@ def post_new(request):
             return redirect('post_detail', pk=post.pk)
 
 
+
     else:
         form = PostForm
 
@@ -51,8 +52,22 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
 
-# def resume(request):
-#     return render(request, 'blog/resume.html')
+def work_experience_edit(request, pk):
+    post = get_object_or_404(Experience, pk=pk)
+
+    if request.method == "POST":
+        form = ExperienceForm(request.POST, instance=post)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('resume')
+    else:
+        form = ExperienceForm(instance=post)
+
+    return render(request, 'blog/work_experience_edit.html', {'form': form})
 
 def work_experience_new(request):
     if request.method == "POST":
@@ -71,6 +86,23 @@ def work_experience_new(request):
 
     return render(request, 'blog/work_experience_edit.html', {'form': form})
 
+def education_edit(request, pk):
+    post = get_object_or_404(Education, pk=pk)
+
+    if request.method == "POST":
+        form = EducationForm(request.POST, instance=post)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('resume')
+    else:
+        form = EducationForm(instance=post)
+
+    return render(request, 'blog/education_edit.html', {'form': form})
+
 def education_new(request):
     if request.method == "POST":
         form = EducationForm(request.POST)
@@ -88,6 +120,24 @@ def education_new(request):
 
     return render(request, 'blog/education_edit.html', {'form': form})
 
+def interest_edit(request, pk):
+    post = get_object_or_404(Interest, pk=pk)
+
+    if request.method == "POST":
+        form = InterestsForm(request.POST, instance=post)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('resume')
+    else:
+        form = InterestsForm(instance=post)
+
+    return render(request, 'blog/interest_edit.html', {'form': form})
+
+
 def interest_new(request):
     if request.method == "POST":
         form = InterestsForm(request.POST)
@@ -98,8 +148,6 @@ def interest_new(request):
             post.published_date = timezone.now()
             post.save()
             return redirect('resume')
-
-
     else:
         form = InterestsForm
 
@@ -114,19 +162,5 @@ def resume(request):
     all_items = list(experiences) + list(educations) + list(interests)
 
     return render(request, 'blog/resume.html', {'all_items_feed': all_items})
-
-    # posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
-
-# def experience_list(request):
-#     experiences = Experience.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
-#     return render(request, 'resume.html', {'experiences' : experiences})
-
-# def education_list(request):
-#     educations = Education.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
-#     return render(request, 'resume.html', {'educations' : educations})
-
-# def interest_list(request):
-#     interests = Interest.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
-#     return render(request, 'resume.html', {'interests' : interests})
 
 

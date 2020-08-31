@@ -19,5 +19,10 @@ urlpatterns = [
     path('education_new', views.education_new, name='education_new'),
     path('interest_new', views.interest_new, name='interest_new'),
 
+    path('work_experience_edit/<int:pk>', views.work_experience_edit, name='work_experience_edit'),
+    path('education_edit/<int:pk>', views.education_edit, name='education_edit'),
+    path('interest_edit/<int:pk>', views.interest_edit, name='interest_edit'),
+
+
 ]
 
